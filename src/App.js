@@ -1,10 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './components/Home';
+import About from './components/About';
+import Contact from './components/Contact';
+import Service from './components/Service';
+import Faq from './components/Faq';
+import Login from './components/Login';
+
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello Welcome to TaskZen!</h1>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route element={<Home />} path='/Home' />
+          <Route element={<About />} path='/About' />
+          <Route element={<Contact />} path='/Contact' />
+          <Route element={<Service />} path='/Service' />
+          <Route element={<Faq />} path='/Faq' />
+          <Route element={<Login />} path='/Login' />
+        </Routes>
+      </Router>
     </div>
   );
 }
