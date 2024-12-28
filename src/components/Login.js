@@ -55,29 +55,28 @@ export default function Login() {
             return;
         }
 
-        axios.post('http://localhost:8000/api/loginUser').then((response) => response.json().then(response => {
-            if (response.data === 1) {
-                alert('Login successfully.')
-                sessionStorage.setItem('authToken', response.token)
-                sessionStorage.setItem('userRole', response.role)
-                navigate('/')
-            } else {
-                sessionStorage.clear()
-                userSignInErrorMessage.innerHTML = "Invalid Password"
-                setInputValues({
-                    email: '',
-                    password: ''
-                })
-                console.log(response);
-            }
-        })).catch((error) => {
-            console.error("Error occurred while user login! " + error)
-            userSignInErrorMessage.innerHTML = "Server did not response! Please try again."
-            setInputValues({
-                email: '',
-                password: ''
+        const formData = new FormData()
+        formData.append('email', inputValues.email)
+        formData.append('password', inputValues.password)
+        axios.post('http://localhost:8000/api/loginUser', formData)
+            .then((response) => {
+                if (response.data.data === '1') {
+                    alert('Login successfully.');
+                    sessionStorage.setItem('authToken', response.data.token);
+                    sessionStorage.setItem('userRole', response.data.role);
+                    navigate('/');
+                } else {
+                    sessionStorage.clear();
+                    userSignInErrorMessage.innerHTML = "Invalid Password";
+                    setInputValues({ email: '', password: '' });
+                    console.log(response);
+                }
             })
-        })
+            .catch((error) => {
+                console.error("Error occurred while user login! " + error);
+                userSignInErrorMessage.innerHTML = "Server did not respond! Please try again.";
+                setInputValues({ email: '', password: '' });
+            });
 
     }
     return (
@@ -117,7 +116,10 @@ export default function Login() {
                             <br /> <br />
 
                             <div className="mb-2">
-                                <button type="submit" className="w-full py-3 bg-white text-blue-600 font-semibold rounded-lg  focus:outline-none focus:ring-2 focus:ring-blue-500">Login</button>
+                                <button type="submit" className="w-full py-3 bg-white text-blue-600 font-semibold rounded-lg  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    viewBox="0 0 24 24">
+                                    Login
+                                </button>
                             </div>
                             <span id="userSignInErrorMessage" className="text-white"></span>
 
