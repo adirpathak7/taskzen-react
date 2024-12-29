@@ -12,32 +12,32 @@ export default function Navbar() {
                                 TaskZen
                             </div>
                             <div className="hidden md:flex space-x-6 flex-1 justify-center">
-                                <Link to="/Home"
+                                <Link to="/home"
                                     className="text-purple-500 hover:text-purple-800 px-3 py-2 text-sm font-medium relative group">
                                     Home
                                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"></span>
                                 </Link>
 
-                                <Link to="/About"
+                                <Link to="/about"
                                     className="text-purple-500 hover:text-purple-800 px-3 py-2 text-sm font-medium relative group">
                                     About
                                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"></span>
                                 </Link>
 
 
-                                <Link to="/Contact"
+                                <Link to="/contact"
                                     className="text-purple-500 hover:text-purple-800 px-3 py-2 text-sm font-medium relative group">
                                     Contact
                                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"></span>
                                 </Link>
 
-                                <Link to="/Service"
+                                <Link to="/service"
                                     className="text-purple-500 hover:text-purple-800 px-3 py-2 text-sm font-medium relative group">
                                     Services
                                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"></span>
                                 </Link>
 
-                                <Link to="/FAQ"
+                                <Link to="/faq"
                                     className="text-purple-500 hover:text-purple-800 px-3 py-2 text-sm font-medium relative group">
                                     FAQ
                                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"></span>
@@ -45,8 +45,8 @@ export default function Navbar() {
                             </div>
 
                             <div className="flex space-x-4">
-                                <Link to="/Login" className="items-center bg-gray-100 border-0 py-2 px-5 text-gray-800 hover:text-white hover:bg-purple-600 rounded-md text-base transition duration-300 ease-in-out">Login</Link>
-                                <Link to="/Register" className="items-center bg-gray-100 border-0 py-2 px-5 text-gray-800 hover:text-white hover:bg-purple-600 rounded-md text-base transition duration-300 ease-in-out">Sign-up</Link>
+                                <Link to="/login" className="items-center bg-gray-100 border-0 py-2 px-5 text-gray-800 hover:text-white hover:bg-purple-600 rounded-md text-base transition duration-300 ease-in-out">Login</Link>
+                                <Link to="/register" className="items-center bg-gray-100 border-0 py-2 px-5 text-gray-800 hover:text-white hover:bg-purple-600 rounded-md text-base transition duration-300 ease-in-out">Sign-up</Link>
                             </div>
                         </div>
                     </div>

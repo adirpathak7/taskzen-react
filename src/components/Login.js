@@ -64,7 +64,7 @@ export default function Login() {
                     alert('Login successfully.');
                     sessionStorage.setItem('authToken', response.data.token);
                     sessionStorage.setItem('userRole', response.data.role);
-                    navigate('/');
+                    navigate('/client/dashboard');
                 } else {
                     sessionStorage.clear();
                     userSignInErrorMessage.innerHTML = "Invalid Password";
@@ -81,13 +81,13 @@ export default function Login() {
     }
     return (
         <>
-            <div className="flex justify-center items-center min-h-screen">
-                <div className="flex bg-purple-600 p-8 rounded-lg shadow-lg w-full max-w-4xl">
+            <div className='flex justify-center items-center min-h-screen bg-purple-500'>
+                <div className="flex p-8 rounded-lg shadow-lg w-full max-w-4xl bg-white">
                     <div className="flex-1 flex justify-center items-center">
-                        <img src={loginImage} alt="Login Image" />
+                        <img src={loginImage} alt="Login Image" className='' />
                     </div>
 
-                    <div className="flex-1 text-white px-8">
+                    <div className="flex-1  px-8">
                         <h2 className="text-4xl font-bold mb-6">Login In-To Task-Zen</h2>
 
                         <form id="signInForm" onSubmit={userSignIn} method="post">
@@ -109,22 +109,22 @@ export default function Login() {
                                 </div>
                             </div>
 
-                            <div className="mb-4">
-                                <Link to="#" className="text-md text-white hover:text-gray-100">Forgot Password?</Link>
+                            <div className="mt-6 mb-0">
+                                <Link to="#" className="text-md text-black hover:text-purple-600">Forgot Password?</Link>
                             </div>
 
                             <br /> <br />
 
                             <div className="mb-2">
-                                <button type="submit" className="w-full py-3 bg-white text-blue-600 font-semibold rounded-lg  focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                <button type="submit" className="w-full py-2 bg-purple-500 text-black font-semibold rounded-md hover:bg-purple-600"
                                     viewBox="0 0 24 24">
                                     Login
                                 </button>
                             </div>
-                            <span id="userSignInErrorMessage" className="text-white"></span>
+                            <span id="userSignInErrorMessage" className="text-black ml-12"></span>
 
-                            <div className="text-center text-sm mt-2">
-                                <p>Don't have an account? <Link to="/Register" className="text-gray-50 hover:underline hover:text-white">Sign Up</Link></p>
+                            <div className="text-center text-sm mt-4">
+                                <p>Don't have an account? <Link to="/Register" className="text-black hover:underline hover:text-purple-600">Sign Up</Link></p>
                             </div>
                         </form>
                     </div>
