@@ -17,7 +17,7 @@ export default function Home() {
                 >
                     <div className="md:w-1/2 space-y-4">
                         <h1 className="text-4xl md:text-5xl font-bold">
-                            Find Your Perfect <span className="text-sky-300">Freelancer</span>
+                            Find Your Perfect <span className="text-sky-300">Freelancer </span>
                             <span className="text-sky-300">Companys</span> Quick and Easy
                         </h1>
                         <p className="text-lg">

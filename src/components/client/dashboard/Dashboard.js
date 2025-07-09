@@ -13,6 +13,11 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const [animatedTotalRevenue, setAnimatedTotalRevenue] = useState(0);
+    const [animatedTotalProfit, setAnimatedTotalProfit] = useState(0);
+    const [animatedTotalProject, setAnimatedTotalProject] = useState(0);
+    const [animatedTotalFreelancers, setAnimatedTotalFreelancers] = useState(0);
+
     const lineChartRef = useRef(null);
     const barChartRef = useRef(null);
 
@@ -67,6 +72,34 @@ export default function Dashboard() {
     useEffect(() => {
         fetchCounterInClientDashboard();
     }, []);
+
+    useEffect(() => {
+        if (clientData && sumRangeData && countData) {
+            const { projectCount = 0, totalRangeSum = 0 } = clientData || {};
+            const firstProfit = sumRangeData || 0;
+            const totalFreelancers = countData || 0;
+            const originalProfit = totalRangeSum - firstProfit;
+
+            // Start animations for counters
+            animateCounter(totalRangeSum, setAnimatedTotalRevenue);
+            animateCounter(originalProfit, setAnimatedTotalProfit);
+            animateCounter(projectCount, setAnimatedTotalProject);
+            animateCounter(totalFreelancers, setAnimatedTotalFreelancers);
+        }
+    }, [clientData, sumRangeData, countData]);
+
+    function animateCounter(target, setValue) {
+        let currentCount = 0;
+        const increment = target / 100;
+        const interval = setInterval(() => {
+            currentCount += increment;
+            if (currentCount >= target) {
+                currentCount = target;
+                clearInterval(interval);
+            }
+            setValue(Math.floor(currentCount)); // Update state to trigger re-render
+        }, 25);
+    }
 
     const {
         projectCount = 0,
@@ -126,28 +159,28 @@ export default function Dashboard() {
                     <i className="ri-eye-line text-4xl text-white"></i>
                     <div className="ml-4">
                         <div className="text-white">Total Revenue</div>
-                        <div className="text-2xl font-semibold text-white" id="totalClientSumRange">{totalRangeSum}</div>
+                        <div className="text-2xl font-semibold text-white">{animatedTotalRevenue}</div>
                     </div>
                 </div>
                 <div className="flex items-center p-6 bg-purple-700 rounded-lg shadow-md">
                     <i className="ri-bar-chart-grouped-line text-4xl text-white"></i>
                     <div className="ml-4">
                         <div className="text-white">Total Profit</div>
-                        <div className="text-2xl font-semibold text-white" id="totalClientProfit">{originalProfit}</div>
+                        <div className="text-2xl font-semibold text-white">{animatedTotalProfit}</div>
                     </div>
                 </div>
                 <div className="flex items-center p-6 bg-purple-700 rounded-lg shadow-md">
                     <i className="ri-product-hunt-line text-4xl text-white"></i>
                     <div className="ml-4">
                         <div className="text-white">Total Project</div>
-                        <div className="text-2xl font-semibold text-white" id="totalClientProject">{projectCount}</div>
+                        <div className="text-2xl font-semibold text-white">{animatedTotalProject}</div>
                     </div>
                 </div>
                 <div className="flex items-center p-6 bg-purple-700 rounded-lg shadow-md">
                     <i className="ri-user-line text-4xl text-white"></i>
                     <div className="ml-4">
                         <div className="text-white">Total Freelancer</div>
-                        <div className="text-2xl font-semibold text-white" id="totalClientFreelancer">{totalFreelancers}</div>
+                        <div className="text-2xl font-semibold text-white">{animatedTotalFreelancers}</div>
                     </div>
                 </div>
             </div>

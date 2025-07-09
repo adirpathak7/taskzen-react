@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import loginImage from '../images/Loginimg.png'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import { Navigate } from 'react-router-dom'
 
 export default function Login() {
     const [inputValues, setInputValues] = useState({
