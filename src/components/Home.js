@@ -7,6 +7,7 @@ import aiServiceImage from "../images/aiservice.jpg";
 import architectureImage from "../images/architecture.jpg";
 import brandImage from "../images/brand.jpg";
 import workImage from "../images/work.png";
+import Footer from './Footer';
 
 export default function Home() {
     return (
@@ -28,17 +29,17 @@ export default function Home() {
                         <div className="flex items-center space-x-4 mt-4">
                             <div className="flex -space-x-2">
                                 <img
-                                    src="https://via.placeholder.com/40"
+                                    src="https://th.bing.com/th/id/OIP.EwG6x9w6RngqsKrPJYxULAHaHa?w=191&h=191&c=7&r=0&o=7&dpr=1.5&pid=1.7&rm=3"
                                     alt="User"
                                     className="w-10 h-10 rounded-full border-2 border-white"
                                 />
                                 <img
-                                    src="https://via.placeholder.com/40"
+                                    src="https://th.bing.com/th/id/OIP.EwG6x9w6RngqsKrPJYxULAHaHa?w=191&h=191&c=7&r=0&o=7&dpr=1.5&pid=2.7&rm=2"
                                     alt="User"
                                     className="w-10 h-10 rounded-full border-2 border-white"
                                 />
                                 <img
-                                    src="https://via.placeholder.com/40"
+                                    src="https://th.bing.com/th/id/OIP.EwG6x9w6RngqsKrPJYxULAHaHa?w=191&h=191&c=7&r=0&o=7&dpr=1.5&pid=3.7&rm=1"
                                     alt="User"
                                     className="w-10 h-10 rounded-full border-2 border-white"
                                 />
@@ -167,6 +168,7 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

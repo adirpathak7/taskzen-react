@@ -80,7 +80,7 @@ export default function Login() {
     }
     return (
         <>
-            <div className='flex justify-center items-center min-h-screen bg-purple-500'>
+            <div className='flex justify-center items-center py-20 min-h-screen bg-purple-500'>
                 <div className="flex p-8 rounded-lg shadow-lg w-full max-w-4xl bg-white">
                     <div className="flex-1 flex justify-center items-center">
                         <img src={loginImage} alt="Login Image" className='' />

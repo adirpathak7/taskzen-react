@@ -140,7 +140,7 @@ export default function Register() {
 
     return (
         <>
-            <div className="flex justify-center items-center min-h-screen bg-purple-500">
+            <div className="flex justify-center py-20 items-center min-h-screen bg-purple-500">
                 <div className="flex bg-white p-8 rounded-lg shadow-lg w-full max-w-4xl">
                     <div className="flex-1 flex justify-center items-center">
                         <img src={signUpImage} alt="Register Image" />

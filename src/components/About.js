@@ -5,6 +5,7 @@ import visionImg from '../images/vision.jpg';
 import adiImg from '../images/adi.jpg';
 import foundersImg from '../images/fountersimg.jpg';
 import somnathImg from '../images/somnath.jpg';
+import Footer from './Footer';
 
 export default function About() {
     return (
@@ -142,6 +143,8 @@ export default function About() {
                     </section>
                 </div>
             </section>
+        <Footer />
         </>
+        
     );
 }
