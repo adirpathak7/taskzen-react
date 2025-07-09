@@ -1,6 +1,6 @@
 import React from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Outlet, useNavigate, Link } from 'react-router-dom'
+import img from '../../../images/adi.jpg'
 
 export default function Sidebar() {
     const navigate = useNavigate()
@@ -9,103 +9,77 @@ export default function Sidebar() {
         sessionStorage.clear()
         navigate('/login')
     }
+
     return (
-        <>
-            <div class="min-h-screen flex flex-col flex-auto antialiased">
+        <div className="min-h-screen flex flex-col flex-auto antialiased bg-gray-50">
 
-                <header
-                    class="fixed w-full flex items-center justify-between h-16 bg-gradient-to-r from-purple-600 to-indigo-700 text-white px-8 shadow-lg z-10">
-                    <div class="flex items-center space-x-4">
-                        <img id="mainImageOfClient" class="w-10 h-10 rounded-full border-2 border-gray-700" />
-                        <span class="text-2xl font-semibold" id="mainNameOfClient"></span>
-                    </div>
-                    <div class="flex items-center space-x-4">
+            {/* Header */}
+            <header className="fixed w-full flex items-center justify-between h-16 bg-gradient-to-r from-purple-700 via-indigo-700 to-indigo-900 text-white px-8 shadow-md z-20">
+                <div className="flex items-center space-x-4">
+                    <img
+                      src={img}
+                      alt="Client Profile"
+                      className="w-11 h-11 rounded-full border-2 border-white shadow-md hover:ring-4 hover:ring-purple-400 transition duration-300 cursor-pointer"
+                    />
+                    <span
+                      className="text-2xl font-semibold tracking-wide select-none"
+                      id="mainNameOfClient"
+                    >
+                      Client Portal
+                    </span>
+                </div>
+                <div className="flex items-center space-x-6">
+                    <button
+                      type="button"
+                      onClick={logoutClient}
+                      className="flex items-center space-x-2 hover:text-gray-300 transition duration-300"
+                    >
+                      <i className="ri-logout-circle-r-line text-xl"></i>
+                      <span className="text-lg font-medium select-none">Logout</span>
+                    </button>
+                </div>
+            </header>
 
+            {/* Sidebar */}
+            <aside
+              className="fixed top-16 left-0 h-full w-14 hover:w-64 md:w-64 bg-gradient-to-b from-purple-800 via-indigo-800 to-indigo-900 text-white transition-all duration-300 shadow-xl z-10"
+            >
+                <ul id="sidebar-menu" className="flex flex-col py-6 space-y-3">
 
-                        <div class="relative group">
-                            <button type="button" onClick={logoutClient} class="flex items-center hover:text-gray-300">
-                                Logout &nbsp;&nbsp;
-                                <i class="ri-logout-circle-r-line mr-1 text-xl"></i>
-                            </button>
+                    {[
+                      { to: '/client/dashboard', icon: 'ri-dashboard-line', label: 'Dashboard' },
+                      { to: '/client/dashboard/project', icon: 'ri-projector-fill', label: 'Project' },
+                      { to: '/client/dashboard/freelancer', icon: 'ri-macbook-fill', label: 'Freelancers' },
+                      { to: '/client/dashboard/payment', icon: 'ri-briefcase-fill', label: 'Payment' },
+                      { to: '/client/dashboard/profile', icon: 'ri-user-fill', label: 'Profile' },
+                      { to: '/client/dashboard/help', icon: 'ri-message-2-fill', label: 'Help' },
+                      { to: '/client/dashboard/setting', icon: 'ri-settings-3-fill', label: 'Settings' }
+                    ].map(({ to, icon, label }) => (
+                        <li
+                          key={to}
+                          className="group relative cursor-pointer"
+                        >
+                            <Link
+                              to={to}
+                              className="flex items-center p-4 rounded-lg transition-all duration-300 hover:bg-purple-600 hover:scale-[1.03]"
+                            >
+                                <i className={`${icon} text-2xl group-hover:text-white`}></i>
+                                <span className="ml-5 hidden md:block text-lg font-semibold select-none">{label}</span>
+                            </Link>
 
-                            <span
-                                class="absolute left-1/2 transform -translate-x-1/2 top-10 bg-gray-800 text-white text-sm rounded-lg px-3 py-1 hidden group-hover:block">
-                                LogOut
-                            </span>
-                        </div>
-                    </div>
+                            {/* Active link highlight */}
+                            {/* You can enhance this later by using NavLink from react-router-dom */}
+                        </li>
+                    ))}
+                </ul>
+            </aside>
 
-                </header>
-
-                <aside
-                    class="fixed top-16 left-0 h-full w-14 hover:w-64 md:w-64 bg-gradient-to-b from-purple-700 to-indigo-700 text-white transition-all duration-300 shadow-lg z-10">
-                    <ul id="sidebar-menu" class="flex flex-col py-6 space-y-3">
-                        <li class="menu-item relative cursor-pointer group">
-                            <Link to='/client/dashboard' >
-                                <span
-                                    class="flex items-center p-4 hover:bg-indigo-500 transition-all duration-300 rounded-lg">
-                                    <i class="ri-dashboard-line text-xl"></i><span class="ml-4 hidden md:block">Dashboard</span>
-                                </span>
-                            </Link>
-                        </li>
-                        <li class="menu-item relative cursor-pointer group">
-                            <Link to='/client/dashboard/project'>
-                                <span
-                                    class="flex items-center p-4 hover:bg-indigo-500 transition-all duration-300 rounded-lg">
-                                    <i class="ri-projector-fill text-xl"></i><span class="ml-4 hidden md:block">Project</span>
-                                </span>
-                            </Link>
-                        </li>
-                        <li class="menu-item relative cursor-pointer group">
-                            <Link to='/client/dashboard' >
-                                <span
-                                    class="flex items-center p-4 hover:bg-indigo-500 transition-all duration-300 rounded-lg">
-                                    <i class="ri-macbook-fill text-xl"></i><span
-                                        class="ml-4 hidden md:block">Freelancers</span>
-                                </span>
-                            </Link>
-                        </li>
-                        <li class="menu-item relative cursor-pointer group">
-                            <Link to='/client/dashboard' >
-                                <span
-                                    class="flex items-center p-4 hover:bg-indigo-500 transition-all duration-300 rounded-lg">
-                                    <i class="fas fa-briefcase text-xl"></i><span class="ml-4 hidden md:block">Payment</span>
-                                </span>
-                            </Link>
-                        </li>
-                        <li class="menu-item relative cursor-pointer group">
-                            <Link to='/client/dashboard' >
-                                <span
-                                    class="flex items-center p-4 hover:bg-indigo-500 transition-all duration-300 rounded-lg">
-                                    <i class="fas fa-user text-xl"></i><span class="ml-4 hidden md:block">Profile</span>
-                                </span>
-                            </Link>
-                        </li>
-                        <li class="menu-item relative cursor-pointer group">
-                            <Link to='/client/dashboard' >
-                                <span
-                                    class="flex items-center p-4 hover:bg-indigo-500 transition-all duration-300 rounded-lg">
-                                    <i class="ri-message-2-fill text-xl"></i><span class="ml-4 hidden md:block">Help</span>
-                                </span>
-                            </Link>
-                        </li>
-                        <li class="menu-item relative cursor-pointer group">
-                            <Link to='/client/dashboard' >
-                                <span
-                                    class="flex items-center p-4 hover:bg-indigo-500 transition-all duration-300 rounded-lg">
-                                    <i class="fas fa-cog text-xl"></i><span class="ml-4 hidden md:block">Settings</span>
-                                </span>
-                            </Link>
-                        </li>
-                    </ul>
-                </aside>
-
-                <main class="ml-14 md:ml-64 p-8 pt-24 bg-gray-100 min-h-screen">
-                    <div class="content h-full mb-10 p-6">
-                        <Outlet />
-                    </div>
-                </main>
-            </div>
-        </>
+            {/* Main Content */}
+            <main className="ml-14 md:ml-64 p-10 pt-28 bg-gray-100 min-h-screen">
+                <div className="content h-full mb-10 bg-white">
+                    <Outlet />
+                </div>
+            </main>
+        </div>
     )
 }
