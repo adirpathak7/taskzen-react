@@ -54,7 +54,7 @@ export default function Login() {
         if (!errorEl) return;
 
         // Dummy static login
-        if (email === 'test@example.com' && password === '123456') {
+        if (email === 'adityarpathak7@gmail.com' && password === '2147') {
             alert('Login successful (static)');
             sessionStorage.setItem('authToken', 'dummy-static-token');
             sessionStorage.setItem('userRole', role);
