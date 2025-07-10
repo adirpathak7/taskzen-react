@@ -25,7 +25,7 @@ export default function Sidebar() {
                       className="text-2xl font-semibold tracking-wide select-none"
                       id="mainNameOfClient"
                     >
-                      Client Portal
+                      Client
                     </span>
                 </div>
                 <div className="flex items-center space-x-6">

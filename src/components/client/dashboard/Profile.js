@@ -3,14 +3,14 @@ import profilePic from '../../../images/adi.jpg'; // business logo or client pho
 
 export default function ClientProfile() {
   const [profile, setProfile] = useState({
-    name: "Aditya Sharma",
-    email: "aditya@gmail.com",
-    phone: "9876543210",
+    name: "Aaditya Pathak",
+    email: "adityarpathak7@gmail.com",
+    phone: "7600307488",
     company: "Aditya Enterprises",
     industry: "Retail",
-    location: "Mumbai, India",
+    location: "Surat, India",
     about: "We are a retail business specializing in consumer electronics with a passion for customer satisfaction.",
-    website: "https://adityaenterprises.com",
+    website: "https://ap-portfolio-puce.vercel.app/",
   });
 
   return (
